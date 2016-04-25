@@ -1,6 +1,6 @@
 public class SomeClass{
 publi void thoughtForTheDay(){
-system.out.println("I could'nt repair your brakes, so I made your horn louder");
+system.out.println("I could'nt repair your brakes, so I made yourgit  horn louder");
 
 publi void upcomingEvents(){
 system.out.println("Upcomin Events");
