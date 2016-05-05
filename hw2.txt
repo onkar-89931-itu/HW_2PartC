@@ -1,0 +1,43 @@
+1. Create a new git repository somewhere in your filesystem, and configure a remote (called whatever you want, 
+
+2. What command did you use to configure the remote?
+Ans: git remote add Onkar https://github.com/onkar-89931-itu/Assingment-1.git 
+
+3. Instead of creating a new git repository and configuring it with this remote, I could have asked you to git clone the repo from afs. If you had done so, what would the output of git remote -v be?
+Ans: 
+origin	https://github.com/Onkar-Kale/Git_Class_Exercise1.git (fetch) 
+origin	https://github.com/Onkar-Kale/Git_Class_Exercise1.git (push) 
+
+4. Run git fetch remotename (substituting your remote name for remotename).
+Ans: Done
+
+5. Did anything appear in your working directory? Why?
+Ans: No because only fetching is done, we need to merge this.
+
+6. Update your local master branch with the remote one, and give the command you used to do so.
+Ans: git merge Onkar/master
+7. Your working directory should have been updated. You should check that. That means the master branch was updated on the remote. But it's possible that when we ran git fetch, we fetched other branches as well! How could we (i.e. what command could we use) find all the branches we may have gotten from the remote?
+Ans: edureka@ubuntu:~/Desktop/partC$ git branch -r 
+  Onkar/addEvents 
+  Onkar/master 
+  Onkar/moreEvents 
+  Onkar/new_branch 
+  Onkar/new_branch3 
+
+8. Spoiler: there's another branch. Check it out, find the file on that branch, and give the first five letters of that file as well as the command you used to checkout the branch. NOTE: It's very bad practice to directly git checkout the remote-tracking branch. Instead, try to checkout the branch so that it creates a local branch based on the remote-tracking branch. If you're not sure how (it's pretty easy to guess, though), you can look it up.
+Ans: Git checkout addEvents
+File Name: SomeC
+
+9. You're going to be submitting your homework on the master branch, so you may want to git checkout back there.
+Ans: edureka@ubuntu:~/Desktop/partC$ git checkout master 
+Switched to branch 'master'
+
+What is a bare repository? What makes it different from normal repositories? In what situations is it used?
+Ans: A bare repository created with git init --bare is for… sharing. If you are collaborating with a team of developers, and need a place to share changes to a repo, then you will want to create a bare repository in centralized place where all users can push their changes (often the easy choice is github.com). Because git is a distributed version control system, no one will directly edit files in the shared centralized repository. Instead developers will clone the shared bare repo, make changes locally in their working copies of the repo, then push back to the shared bare repo to make their changes available to other users.
+
+Because no one ever makes edits directly to files in the shared bare repo, a working tree is not needed. In fact the working tree would just get in way and cause conflicts as users push code to the repository. This is why bare repositories exist and have no working tree.
+
+10. In lecture, I was careful to explain the two-step procedure of using git fetch and git merge remotename/branchname to get commits from a remote. When would this be a good idea as opposed to simply doing git pull remotename branchname? Briefly discuss remote-tracking branches and their relevance in your answer.
+
+Ans:      The problem with git pull is that by both fetching and merging in one command, your working directory is updated without giving you a chance to examine the changes you’ve just brought into your repository. 
+The other idea is that if you only ever use “git pull”, it’s possible that you’ll never understand what remote-tracking branches are (or what “origin/master” means in merge commits) and they’re fantastically useful.
